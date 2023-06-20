@@ -25,15 +25,15 @@ message PmtdCommonMsg {
 // pmtd设备类型
 enum PmtdDeviceTypeE {
   // 三维感知模组
-  Pmtd = 0;
+  Device_Pmtd = 0;
   // 相机
-  CsiCamera = 1;
+  Device_CsiCamera = 1;
   // 激光雷达
-  Livox = 2;
+  Device_Livox = 2;
   // imu，预留
-  Imu = 3;
+  Device_Imu = 3;
   // 文件管理器
-  FileMannager = 4;
+  Device_FileMannager = 4;
   // 外部接入设备1/2/3
   ThirdPartyDevice1 = 5;
   ThirdPartyDevice2 = 6;
