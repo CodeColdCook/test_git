@@ -43,15 +43,15 @@ enum PmtdDeviceTypeE {
 // 设备及内部传感器等硬件状态
 enum PmtdStatusTypeE {
   // 设备正常
-  OK = 0x00;
+  DEVICE_OK = 0x00;
   // 设备关闭，或断开连接
-  STOP = 0x01;
+  DEVICE_STOP = 0x01;
   // 设备正常运行时心跳包
-  START = 0x02;
+  DEVICE_START = 0x02;
   // 设备报警，可以继续运行，根据pmtd通讯协议定义报文
-  WARN = 0x03;
+  DEVICE_WARN = 0x03;
   // 设备错误，无法继续运行，根据pmtd通讯协议定义报文
-  ERROR = 0x04;
+  DEVICE_ERROR = 0x04;
 }
 
 // pmtd通用设备状态反馈消息格式
