@@ -13,7 +13,7 @@ add_definitions(-Wall -Wextra -Wno-unused-parameter -O2)
 add_definitions(-O2)
 
 # install path
-set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/install)
+#set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/install)
 
 # Find required protobuf package
 find_package(Protobuf  REQUIRED)
