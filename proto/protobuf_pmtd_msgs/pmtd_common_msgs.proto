@@ -40,6 +40,10 @@ enum PmtdDeviceTypeE {
   ThirdPartyDevice3 = 7;
 }
 
+enum PmtdTest {
+  Test = 0x00;
+}
+
 // 设备及内部传感器等硬件状态
 enum PmtdStatusTypeE {
   // 设备正常
