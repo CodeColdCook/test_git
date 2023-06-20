@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package PmtdMsg;
+
+message Header {
+  // 设备号(唯一)
+  int32 device_number = 1;
+  // 消息发送时刻，秒.
+  double timestamp_sec = 2;
+  // 消息类型，参考通讯协议
+  int32 message_type = 3;
+  // 校验码，自定义选择加密与解密
+  string verify_code = 4;
+}
+
+message PmtdCommonMsg {
+  // pmtd消息头
+  PmtdMsg.Header header = 1;
+  // 命令类型，根据pmtd通讯协议编码与解析
+  int32 command_type = 2;
+  // 消息本体，根据命令类型
+  bytes body = 3;
+}
+
+// pmtd设备类型
+enum PmtdDeviceTypeE {
+  // 三维感知模组
+  Pmtd = 0;
+  // 相机
+  CsiCamera = 1;
+  // 激光雷达
+  Livox = 2;
+  // imu，预留
+  Imu = 3;
+  // 文件管理器
+  FileMannager = 4;
+  // 外部接入设备1/2/3
+  ThirdPartyDevice1 = 5;
+  ThirdPartyDevice2 = 6;
+  ThirdPartyDevice3 = 7;
+}
+
+// 设备及内部传感器等硬件状态
+enum PmtdStatusTypeE {
+  // 设备正常
+  OK = 0x00;
+  // 设备关闭，或断开连接
+  STOP = 0x01;
+  // 设备正常运行时心跳包
+  START = 0x02;
+  // 设备报警，可以继续运行，根据pmtd通讯协议定义报文
+  WARN = 0x03;
+  // 设备错误，无法继续运行，根据pmtd通讯协议定义报文
+  ERROR = 0x04;
+}
+
+// pmtd通用设备状态反馈消息格式
+message DeviceStatusMsg {
+  // 设备类型
+  PmtdDeviceTypeE device_type = 1;
+  // 设备状态
+  PmtdStatusTypeE device_status = 2;
+  // 设备异常报文，根据设备状态确定报文类型，根据协议确定报文内容
+  int32 device_error_code = 3;
+}
+
+// pmtd设备状态反馈消息包
+message PmtdDeviceStatusMsgs {
+  // pmtd消息头
+  PmtdMsg.Header header = 1;
+  // 设备状态汇总
+  repeated DeviceStatusMsg status_msgs = 2;
+}
