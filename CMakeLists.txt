@@ -10,13 +10,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_definitions(-Wall -Wextra -Wno-unused-parameter -O2)
-add_definitions(-O2)
+#add_definitions(-O2)
 
 # install path
-#set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/install)
+#set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/pmtd/install)
+
 
 # Find required protobuf package
-find_package(Protobuf  REQUIRED)
+find_package(Protobuf)
 find_package(eCAL REQUIRED)
 
 option(PROTO_GEN_CXX "build CXX protobuf file" OFF)
